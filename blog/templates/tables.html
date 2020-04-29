@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>武汉加油</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+
+
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="../static/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="../static/css/fontastic.css">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="../static/css/grasp_mobile_progress_circle-1.0.0.min.css">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet" href="../static/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="../static/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="../static/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+
+     <script src="../static/vendor/jquery/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+		    <script>
+		function myFunction(){
+			alert("开发中，即将上线！");
+		}
+		</script>
+  </head>
+  <body>
+    <!-- Side Navbar -->
+    <nav class="side-navbar">
+      <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center"><h2>武汉加油</h2>
+          <!-- User Info-->
+          <!-- Small Brand information, appears on minimized sidebar-->
+          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong></strong><strong class="text-primary"></strong></a></div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+
+          <ul id="side-main-menu" class="side-menu list-unstyled">
+            <li><a href="../index.html"> <i class="icon-home"></i>首页                             </a></li>
+            <li><a href="../tables.html"> <i class="icon-grid"></i>详细数据 </a></li>
+
+            <li><a href="../charts.html"> <i class="fa fa-bar-chart"></i>数据分析                             </a></li>
+            <li><a href="../index.html" onclick="myFunction()"> <i class="icon-interface-windows"></i>SARS对比                            </a></li>
+
+            <li><a href="../index.html" onclick="myFunction()"> <i class="icon-form"></i>疫情预测                            </a></li>
+
+
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="page">
+      <!-- navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+                  <div class="brand-text d-none d-md-inline-block"><span></span><strong class="text-primary">2019-nCoV山东省疫情追踪</strong></div></a></div>
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                <!-- Notifications dropdown-->
+
+                <!-- Languages dropdown    -->
+
+                <!-- Log out-->
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+
+      <section>
+        <div class="container-fluid">
+          <!-- Page Header-->
+          <header>
+            <h1 class="h3 display">疫情详细数据            </h1>
+          </header>
+
+
+          <div class="row">
+
+
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h4>全国疫情数据</h4>
+                </div>
+
+{% load dictHash %}
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id = "myTable" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>序号</th>
+                          <th>省/市</th>
+                          <th>确诊</th>
+                          <th>死亡</th>
+                          <th>治愈</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for province,provinceId in chinaProvinceRe.items %}
+                        <tr>
+                          <th scope="row">{{forloop.counter}}</th>
+                          <td>{{province}}</td>
+                          <td>{{ chinaProvinceMatchConfirm|hash:province }}</td>
+                          <td>{{chinaProvinceMatchDead|hash:province }}</td>
+                          <td>{{chinaProvinceMatchHeal|hash:province }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h4>山东疫情数据</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id = "myTable1" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>序号</th>
+                          <th>城市</th>
+                          <th>确诊</th>
+                          <th>死亡</th>
+                           <th>治愈</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for city,cityId in provinceRe.items %}
+                        <tr>
+                          <th scope="row">{{forloop.counter}}</th>
+                          <td>{{city}}</td>
+                          <td>{{ provinceMatchConfirm|hash:city }}</td>
+                          <td>{{ provinceMatchDead|hash:city }}</td>
+                          <td>{{ provinceMatchHeal|hash:city }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h4>待定表格</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id = "myTable" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>待定</th>
+                          <th>待定</th>
+                          <th>待定</th>
+                          <th>待定</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>待定</td>
+                          <td>待定</td>
+                          <td>待定</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h4>待定表格</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                     <table id = "myTable" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>待定</th>
+                          <th>待定</th>
+                          <th>待定</th>
+                          <th>待定</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>待定</td>
+                          <td>待定</td>
+                          <td>待定</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="main-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>最新更新时间：{{lastestUpdateTime}}</p>
+            </div>
+
+
+
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+
+    <!-- JavaScript files #by :liuzaoqi huanshuo0801@gmail.com-->
+    <script src="../static/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+    <script src="../static/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+    <script src="../static/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../static/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- Main File-->
+    <script src="../static/js/front.js"></script>
+  </body>
+  <script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>
+
+  <script>
+$(document).ready(function(){
+    $('#myTable1').dataTable();
+});
+</script>
+</html>
