@@ -118,3 +118,17 @@ def pie2(request):
 def map3(request):
 
     return render(request, 'map3.html',locals())
+
+def forecast(request):
+    Url1="https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5"
+    shuju = requests.post(Url1,timeout=3).json()
+    data = json.loads(shuju["data"])
+    china_data = ncovdata.getChinaData(Url1)
+    chinaProvinceRe,chinaProvinceMatchConfirm,chinaProvinceMatchDead,chinaProvinceMatchHeal \
+                                                        = ncovdata.getChinaProvince(china_data=china_data)
+
+
+    dataCharts.createChinaMap(chinaProvinceMatchConfirm=chinaProvinceMatchConfirm)
+    lastestUpdateTime = ncovdata.getUpdateTime()
+
+    return render(request, 'forecast.html',locals())

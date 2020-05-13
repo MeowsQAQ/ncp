@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>武汉加油</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="../static/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="../static/css/fontastic.css">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="../static/css/grasp_mobile_progress_circle-1.0.0.min.css">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet" href="../static/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="../static/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="../static/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+
+		    <script>
+		function myFunction(){
+			alert("开发中，即将上线！");
+		}
+		</script>
+  </head>
+  <body>
+    <!-- Side Navbar -->
+    <nav class="side-navbar">
+      <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center"><h2>武汉加油</h2>
+          <!-- User Info-->
+          <!-- Small Brand information, appears on minimized sidebar-->
+          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong></strong><strong class="text-primary"></strong></a></div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+
+          <ul id="side-main-menu" class="side-menu list-unstyled">
+            <li><a href="../index.html"> <i class="icon-home"></i>首页                             </a></li>
+            <li><a href="../tables.html"> <i class="icon-grid"></i>详细数据 </a></li>
+
+            <li><a href="../charts.html"> <i class="fa fa-bar-chart"></i>数据分析                             </a></li>
+            <!-- <li><a href="../index.html" onclick="myFunction()"> <i class="icon-interface-windows"></i>SARS对比                            </a></li> -->
+
+            <!-- <li><a href="../index.html" onclick="myFunction()"> <i class="icon-form"></i>疫情预测                            </a></li> -->
+            <li><a href="../forecast.html" onclick="myFunction()"> <i class="icon-form"></i>疫情预测                            </a></li>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="page">
+      <!-- navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+                  <div class="brand-text d-none d-md-inline-block"><span></span><strong class="text-primary">2019-nCoV山东省疫情追踪</strong></div></a></div>
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                <!-- Notifications dropdown-->
+
+                <!-- Languages dropdown    -->
+
+                <!-- Log out-->
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <section class="dashboard-header section-padding">
+        <div class="container-fluid">
+          <div class="row d-flex align-items-md-stretch">
+            <!-- To Do List-->
+            <div class="col-lg-12 col-md-12">
+              <div class="card to-do">
+                <strong style="color:#33b35a">SIR模型预测</strong>
+                <div class="card-body">
+                  <p>SIR模型简介</p>
+                  <p>采用SIR模型，S代表易感者（Susceptible），指未得病者，但缺乏免疫能力，与感病者接触后容易受到感染，I表示感染者Infective），指染上传染病的人，它可以传播给S类成员，R表示恢复者（移出者，Removal），指被隔离，或因病愈而具有免疫力的人。染病人群为传染源，通过一定几率把传染病传给易感人群，ta自己也有一定的几率被治愈并免疫，或死亡。易感人群一旦感染即成为新的传染源。
+模型假设:
+①不考虑人口出生、死亡、流动等情况，即人口数量保持常数。
+②一个病人一旦与易感者接触就必然具有一定的传染力。假设 t 时刻单位时间内，一个病人能传染的易感者数目与此环境内易感者总数s(t)成正比，比例系数为β，从而在t时刻单位时间内被所有病人传染的人数为βs(t)i(t)。
+③ t 时刻，单位时间内从染病者中移出的人数与病人数量成正比，比例系数为γ，单位时间内移出者的数量为γi(t)。</p>
+<p>模型为：</p>
+            <div style=" vertical-algin: middle">
+              <img src="../static/img/sir/sir_model2.png" width="400" height="100" />其中，S：感染者 I：感病者  R：隔离者 β：感染率 γ：隔离（恢复）系数
+              <div class="table-box"><table border="1" cellpadding="1" cellspacing="1" style="font-family:Simsun;width:690px;"><tbody><tr><td style="text-align:center;vertical-align:top;">
+              <span style="font-style:italic;">β</span></td>
+              <td style="vertical-align:top;text-align:justify;">
+              <span style="font-style:italic;"></span>is the transmission rate and incorporates the encounter rate between susceptible and infectious individuals together with the probability of transmission.</td>
+              </tr><tr><td style="text-align:center;vertical-align:top;">
+              <span style="font-style:italic;"></span><span style="font-style:italic;">γ</span></td>
+              <td style="vertical-align:top;text-align:justify;">
+              is called the removal or recovery rate, though often we are more interested in its reciprocal (1/γ) which determines the average infectious period.</td>
+              </tr><tr><td style="text-align:center;vertical-align:top;">
+              <span style="font-style:italic;">S</span></td>
+              <td style="vertical-align:top;text-align:justify;">
+              is the initial proportion of the population that are susceptible.</td>
+              </tr><tr><td style="text-align:center;vertical-align:top;">
+              <span style="font-style:italic;">I</span></td>
+              <td style="vertical-align:top;text-align:justify;">
+              is the initial proportion of the population that are infectious.<br></td>
+              </tr></tbody></table></div>
+              <p>在以上三个基本假设条件下，可知：当易感个体和感染个体充分混合时，感染个体的增长率为  ，易感个体的下降率为  ，恢复个体的增长率为  。易感者从患病到移出的过程可以用微分方程表示如下：</p>
+              <img src="../static/img/sir/sir_model1.png" width="600" height="300" />
+
+            </div>
+            <div class="">
+              <p>其中，β为感染系数，代表易感人群与传染源接触被感染的概率。γ为隔离(恢复)系数，我们对其倒数1/γ更感兴趣，代表了平均感染时间(average infectious period)。S(0)为初始易感人数，I(0)为初始感染人数。</p>
+              <p>所以，根据上图三个等式，我们可以得到关于S、I、R与时间t的关系图，如下图所示：</p>
+              <img src="../static/img/sir/sir_model3.png" width="600" height="400" />
+              <p>从图中可见，随着时间的推移传播者刚开始急速上升再缓慢下降。恢复者持续上升趋于稳定，易感染者持续下降趋于稳定。该模型是SIR中最基本模型，此外还有一些考虑出生率、死亡率等因素的模型变种。</p>
+              <p>所以我们需要找到符合新冠肺炎疫情情况的β值，γ值,通过图像来预测未来疫情趋势</p>
+              <p>我们通过疫情数据得到</p>
+              <div class="card-body">
+                <iframe width="600" height="400" frameborder="0" src="../static/realdata.html"></iframe>
+                <!-- <iframe width="550" height="340" frameborder="0" src="../static/confirmLine1.html"></iframe> -->
+              </div>
+            </div>
+                </div>
+              </div>
+            </div>
+      </section>
+
+      <footer class="main-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>最新更新时间：{{lastestUpdateTime}}</p>
+            </div>
+
+
+
+          </div>
+        </div>
+      </footer>
+     </div>
+
+    <!-- JavaScript files-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+    <script src="../static/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+    <script src="../static/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../static/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../static/js/charts-home.js"></script>
+    <!-- Main File-->
+    <script src="../static/js/front.js"></script>
+  </body>
+</html>
