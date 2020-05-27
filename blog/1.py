@@ -29,9 +29,13 @@ print("********************************Dead*************************************
 print(dailyAddDead.values())
 print("**********************************Heal*************************************")
 print(dailyAddHeal.values())
-# shandongProvinceId = chinaProvinceRe["山东"]
-# shandongRe,shandongMatchConfirm,shandongMatchDead,shandongMatchHeal \
-#                                                 = ncovdata.getProvince(china_data=china_data,provinceId=shandongProvinceId)
-# for city,cityId in shandongRe.items():
-#     print(cityId,city,shandongMatchConfirm[city],shandongMatchDead[city],shandongMatchHeal[city])
-# dataChange = ncovdata.getDataChangeList()
+shandongProvinceId = chinaProvinceRe["山东"]
+shandongRe,shandongMatchConfirm,shandongMatchDead,shandongMatchHeal \
+                                                = ncovdata.getProvince(china_data=china_data,provinceId=shandongProvinceId)
+print("***********************************************************************")
+print("***********************************************************************")
+for city,cityId in shandongRe.items():
+    print(cityId,city,shandongMatchConfirm[city],shandongMatchDead[city],shandongMatchHeal[city])
+dataChange = ncovdata.getDataChangeList()
+print("***********************************************************************")
+print("***********************************************************************")

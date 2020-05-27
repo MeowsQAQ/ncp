@@ -20,13 +20,16 @@ yiqingUrl = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5"
 dataChangeListUrl = "https://wuliang.art/ncov/statistics/dataChangeList"
 
 def getDataChangeList():
+    #获取api返回的json，并进行格式化
     dataChangeListUrl = "https://wuliang.art/ncov/statistics/dataChangeList"
     dataChangeList = requests.get(dataChangeListUrl,timeout=3).json()
+    #将每日新增，以及每日情况分别命名dataAddChange和dataAllChange，并新建每日新增确诊，疑似，死亡病例的字典
     dataAddChange = dataChangeList["data"]["chinaDayAddList"]
     dataAllChange = dataChangeList["data"]["chinaDayList"]
     dailyAddConfirm = {}
     dailyAddSuspect = {}
     dailyAddDead = {}
+    #遍历dataAddChange,并对每日新增确诊、疑似、死亡字典进行填充,key为日期，value为人数
     for i  in range(len(dataAddChange)):
         dailyAddConfirm[dataAddChange[i]["date"]]=dataAddChange[i]["confirm"]
         dailyAddSuspect[dataAddChange[i]["date"]]=dataAddChange[i]["suspect"]
@@ -35,6 +38,7 @@ def getDataChangeList():
     print(dailyAddConfirm.values())
     print(sum(dailyAddDead.values()))
     print("*********************")
+    #将湖北确诊数据命名为dataHubeiAddConfirm,同上方法得到湖北确诊和非湖北确诊
     dataHubeiAddConfirm  = dataChangeList["data"]["dailyNewAddHistory"]
     dailyHubeiAddConfirm = {}
     dailyNotHubeiAddConfirm = {}
@@ -45,6 +49,7 @@ def getDataChangeList():
     print(dailyHubeiAddConfirm.keys())
     print(dailyHubeiAddConfirm.values())
     print("WUHANCONFIRM")
+    #同理得到武汉确诊情况
     dataWuhanAddConfirm  = dataChangeList["data"]["wuhanDayList"]
     dailyWuhanAddConfirm = {}
     for i in range(len(dataWuhanAddConfirm)):

@@ -43,7 +43,7 @@ def index(request):
     lastestUpdateTime = ncovdata.getUpdateTime()
     shandong_total = data["areaTree"][0]["children"][13]["total"]["confirm"]
     shandong_crued = data["areaTree"][0]["children"][13]["total"]["heal"]
-    jinan_total = data["areaTree"][0]["children"][13]["children"][3]["total"]["confirm"]
+    jinan_total = 42#data["areaTree"][0]["children"][13]["children"][3]["total"]["confirm"]
 
     chinaProvinceRe,chinaProvinceMatchConfirm,chinaProvinceMatchDead,chinaProvinceMatchHeal \
                                                     = ncovdata.getChinaProvince(china_data=china_data)
