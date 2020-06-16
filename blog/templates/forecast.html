@@ -126,17 +126,45 @@
             </div>
             <div class="">
               <p>其中，β为感染系数，代表易感人群与传染源接触被感染的概率。γ为隔离(恢复)系数，我们对其倒数1/γ更感兴趣，代表了平均感染时间(average infectious period)。S(0)为初始易感人数，I(0)为初始感染人数。</p>
+              <p>另外我们需要注意到传染等级取决于β/γ，也就是基本再生数（basic reproduction number，R0=β/γ），当R0>1表示疾病将爆发，<1时则表示疾病将消亡，故R0也作为判断疫情是否要爆发的重要因素。基本再生数的意义表示平均一个感染态感染的人数，该数是会随着时间变化而变化记为R（t），所以在实际疫情控制的过程中当Rt<1时，即表示一个感染者平均传染给小于一个人，我们即可认为疫情正在走向消亡。</p>
+              <img src="../static/img/sir/R0.png" width="600" height="300" >
               <p>所以，根据上图三个等式，我们可以得到关于S、I、R与时间t的关系图，如下图所示：</p>
               <img src="../static/img/sir/sir_model3.png" width="600" height="400" />
               <p>从图中可见，随着时间的推移传播者刚开始急速上升再缓慢下降。恢复者持续上升趋于稳定，易感染者持续下降趋于稳定。该模型是SIR中最基本模型，此外还有一些考虑出生率、死亡率等因素的模型变种。</p>
               <p>所以我们需要找到符合新冠肺炎疫情情况的β值，γ值,通过图像来预测未来疫情趋势</p>
               <p>我们通过疫情数据得到</p>
               <div class="card-body">
-                <iframe width="600" height="400" frameborder="0" src="../static/realdata.html"></iframe>
+                <iframe width="600" height="360" frameborder="0" src="../static/realdata.html"></iframe>
                 <!-- <iframe width="550" height="340" frameborder="0" src="../static/confirmLine1.html"></iframe> -->
               </div>
+              <h3><b>关于γ</b></h3>
+              <p>所以通过数据我们可以得到疫情爆发早期的γ</p>
+              <img src="../static/img/sir/gama0.png" width="800" height="500" style="vertical-align:middle" />
+                <p>·1月10日至1月19日，该时间段处于疫情爆发伊始，可参考值比较少而且对于疫情是否人传人等特点还不明确。所以移出率处于一个起步状态。</p>
+                <p>·1月20日至1月28日，该时间段γ迅速下降，在该时间段新增确诊增加较快，但是死亡病例与治愈病例很少所以γ不断下降。</p>
+                <p>·1月29日之后，之后的时间段里之后虽然新增确诊很多但是早期感染病例也在不断治愈，或者有的早期病例死亡。使移出率快速增加。但是移出</p>
+                <p>作为对新冠肺炎的预测我们选取最开始阶段的γ值作为预测12月8号的预测，因为前期病例案例比较少且1月10日只有一例死亡两例治愈，所以我们指定γ=0.0731。</p>
+                <h3><b>关于β</b></h3>
+                <p>在估算感染率时我们我们就要关注之前提到过的基础再生数R0，通过R0与已知的γ就可以得到β</p>
+                <p>经过终南山说的R0介于2与3之间，考虑到疫情爆发期间无任何防护措施R0往往会高过疫情期间，所以在疫情爆发初期应该是要>3的</p>
+                <p>另外地，根据美国CDC期刊《新兴传染病》杂志上的一篇题为“High Contagiousness and Rapid Spread of Severe Acute Respiratory Syndrome Coronavirus 2”的文章研究认为认为本次新冠肺炎的R0值达到了从未估计到的5.7。</p>
+                <p>综合两种不同的观点，且考虑到疫情开始阶段R0比较大，所以我以3与5.7中间数4.35为最终R0。加之γ取0.731，我们可得β=0.3179。</p>
+                <h3>总人数S0</h3>
+                <p>总览中国新冠肺炎的数据，截至到2020/05/21，中国累计确诊82971例，累计密切接触者741344例，我们认为这些确诊与密切接触者处于自由交流状态。又因为后期国内主要新增病例为境外输入病例或境外输入相关病例，我们也可以估计另一组S0即S0为80万人</p>
+                <h3>预测结果</h3>
+                <p>SIR绘图我们使用亚利桑那州立大学（ASU）Hans Nesse的在线绘制SIR模型（http://www.public.asu.edu/~hnesse/classes/sir.html）
+                    下图为第一组参数图（S0=80万，β=0.3179，γ=0.0731）</p>
+                <img src="../static/img/sir/sirresult.png" width="800" height="500" style="vertical-align:middle" />
+                <p>
+我们可以看到如果以12月8日为疫情起始点估计，在40天左右（1月种下旬）开始爆发，在60天左右（二月中旬）达到峰值，峰值达到30万，110天左右（三月中旬）结束疫情。</p>
             </div>
+
                 </div>
+                <h3>美国疫情</h3>
+                <img src="../static/img/sir/uresult.png" width="800" height="500" style="vertical-align:middle" />
+                <h4>现实比较</h4>
+                <img src="../static/img/sir/usa.png" width="800" height="500" style="vertical-align:middle" />
+                <p>通过比较我们发现美国新冠肺炎疫情仍在发展过程之中且不乐观</p>
               </div>
             </div>
       </section>

@@ -18,6 +18,23 @@ import time, datetime
 
 yiqingUrl = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5"
 dataChangeListUrl = "https://wuliang.art/ncov/statistics/dataChangeList"
+globalData = "https://lab.isaaclin.cn/nCoV/api/area?lastest=1"
+
+def getGlobalData():
+    globalData = "https://lab.isaaclin.cn/nCoV/api/area?lastest=1"
+    globalList = requests.get(globalData,timeout=3,verify =False).json()
+    globalList = globalList["results"]
+    countriesConfirm = {}
+    countriesCrued = {}
+    countriesDead = {}
+    countries = {}
+    for i in range(len(globalList)):
+        if(globalList[i]["countryName"]!="中国"):
+            countries[i] = globalList[i]["countryName"]
+            countriesConfirm[globalList[i]["countryName"]]=globalList[i]["confirmedCount"]
+            countriesCrued[globalList[i]["countryName"]]=globalList[i]["curedCount"]
+            countriesDead[globalList[i]["countryName"]]=globalList[i]["deadCount"]
+    return countriesConfirm,countriesCrued,countriesDead,countries
 
 def getDataChangeList():
     #获取api返回的json，并进行格式化

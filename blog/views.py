@@ -24,7 +24,8 @@ from pyecharts.faker import Faker #数据包
 from pyecharts.charts import Map,Geo
 from pyecharts import options as opts
 from pyecharts.globals import ThemeType
-
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 global jifen
 
 def home(request):
@@ -73,6 +74,7 @@ def tables(request):
     provinceId = chinaProvinceRe["山东"]
     provinceRe,provinceMatchConfirm,provinceMatchDead,provinceMatchHeal \
                                                     = ncovdata.getProvince(china_data=china_data,provinceId=provinceId)
+    countriesConfirm,countriesCrued,countriesDead,countries =ncovdata.getGlobalData()
     lastestUpdateTime = ncovdata.getUpdateTime()
     return render(request, 'tables.html',locals())
 

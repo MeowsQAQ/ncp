@@ -113,7 +113,6 @@
                 <div class="card-header">
                   <h4>全国疫情数据</h4>
                 </div>
-
 {% load dictHash %}
                 <div class="card-body">
                   <div class="table-responsive">
@@ -143,7 +142,7 @@
                 </div>
               </div>
             </div>
-                        <div class="col-lg-6">
+          <div class="col-lg-6">
               <div class="card">
                 <div class="card-header">
                   <h4>山东疫情数据</h4>
@@ -179,27 +178,30 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-header">
-                  <h4>待定表格</h4>
+                  <h4>全球疫情表</h4>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table id = "myTable" class="table table-striped">
+                    <table id = "myTable2" class="table table-striped">
                       <thead>
                         <tr>
-                          <th>待定</th>
-                          <th>待定</th>
-                          <th>待定</th>
-                          <th>待定</th>
+                          <th>序号</th>
+                          <th>国家</th>
+                          <th>确诊</th>
+                          <th>治愈</th>
+                          <th>死亡</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {% for counityId,country in countries.items %}
                         <tr>
-                          <th scope="row">1</th>
-                          <td>待定</td>
-                          <td>待定</td>
-                          <td>待定</td>
+                          <th scope="row">{{forloop.counter}}</th>
+                          <td>{{country}}</td>
+                          <td>{{ countriesConfirm|hash:country }}</td>
+                          <td>{{ countriesCrued|hash:country }}</td>
+                          <td>{{ countriesCrued|hash:country}}</td>
                         </tr>
-
+                        {% endfor %}
                       </tbody>
                     </table>
                   </div>
@@ -275,6 +277,9 @@ $(document).ready(function(){
   <script>
 $(document).ready(function(){
     $('#myTable1').dataTable();
+});
+$(document).ready(function(){
+    $('#myTable2').dataTable();
 });
 </script>
 </html>
